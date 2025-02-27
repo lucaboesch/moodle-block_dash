@@ -45,10 +45,10 @@ Feature: Dash program to show the list of cohort course
     And I create dash "Users" datasource
     And I configure the "New Dash" block
     And I set the following fields to these values:
-      | Block title  | Users 	 |
-      | Region       | content |
+      | Block title | Users   |
+      | Region      | content |
     And I press "Save changes"
-    And I press "Reset Dashboard for all users" 
+    And I press "Reset Dashboard for all users"
     And I log out
 
   Scenario: new condition:relations
@@ -58,32 +58,32 @@ Feature: Dash program to show the list of cohort course
     And I click on "Continue" "button"
     #---Create new parent role---#
     And I set the following fields to these values:
-      | Short name 			 					 | Parent1 	|
-      | Custom full name 					 | Parent 1 |
-      | contextlevel30             | 1      	|
-      | moodle/user:viewdetails    | 1 				|
-			| moodle/user:viewalldetails | 1 				|
+      | Short name                 | Parent1  |
+      | Custom full name           | Parent 1 |
+      | contextlevel30             | 1        |
+      | moodle/user:viewdetails    | 1        |
+      | moodle/user:viewalldetails | 1        |
     And I click on "Create this role" "button"
     And I click on "List all roles" "button"
     And I click on "Add a new role" "button"
     And I click on "Continue" "button"
     #---Create new parent role---#
     And I set the following fields to these values:
-      | Short name       					 | Parent2 	|
-      | Custom full name 					 | Parent 2 |
-      | contextlevel30             | 1      	|
-      | moodle/user:viewdetails    | 1 				|
-			| moodle/user:viewalldetails | 1 				|
+      | Short name                 | Parent2  |
+      | Custom full name           | Parent 2 |
+      | contextlevel30             | 1        |
+      | moodle/user:viewdetails    | 1        |
+      | moodle/user:viewalldetails | 1        |
     And I click on "Create this role" "button"
     And I follow "Dashboard"
-    #---Assign parent to child---#    
+    #---Assign parent to child---#
     And I am on the "student1" "user > profile" page
     And I click on "Preferences" "link" in the ".profile_tree" "css_element"
     And I follow "Assign roles relative to this user"
     And I follow "Parent 1"
     And I set the field "addselect" to "Teacher First (teacher1@example.com)"
     And I click on "Add" "button" in the "#page-content" "css_element"
-    
+
     And I am on the "student2" "user > profile" page
     And I click on "Preferences" "link" in the ".profile_tree" "css_element"
     And I follow "Assign roles relative to this user"
@@ -96,8 +96,8 @@ Feature: Dash program to show the list of cohort course
     And I follow "Assign roles relative to this user"
     And I follow "Parent 1"
     And I set the field "addselect" to "Teacher First (teacher1@example.com)"
-    And I click on "Add" "button" in the "#page-content" "css_element"   
-    
+    And I click on "Add" "button" in the "#page-content" "css_element"
+
     #---Assign parent to child---#
     And I am on the "teacher1" "user > profile" page
     And I click on "Preferences" "link" in the ".profile_tree" "css_element"
@@ -133,18 +133,18 @@ Feature: Dash program to show the list of cohort course
     #---Teacher login---#
     And I log in as "teacher2"
     And I should see "Users" in the ".block_dash-local-layout-grid_layout" "css_element"
-		And I should see "student2@example.com" in the ".dash-table tbody tr:nth-child(1) td:nth-child(3)" "css_element"
-		And I should see "student4@example.com" in the ".dash-table tbody tr:nth-child(2) td:nth-child(3)" "css_element"
-		And I should see "teacher1@example.com" in the ".dash-table tbody tr:nth-child(3) td:nth-child(3)" "css_element"
-		And I log out
+    And I should see "student2@example.com" in the ".dash-table tbody tr:nth-child(1) td:nth-child(3)" "css_element"
+    And I should see "student4@example.com" in the ".dash-table tbody tr:nth-child(2) td:nth-child(3)" "css_element"
+    And I should see "teacher1@example.com" in the ".dash-table tbody tr:nth-child(3) td:nth-child(3)" "css_element"
+    And I log out
     #---Teacher login---#
     And I log in as "teacher1"
     And I should see "Users" in the ".block_dash-local-layout-grid_layout" "css_element"
-		And I should see "student1@example.com" in the ".dash-table tbody tr:nth-child(1) td:nth-child(3)" "css_element"
-		And I should see "student2@example.com" in the ".dash-table tbody tr:nth-child(2) td:nth-child(3)" "css_element"
-		And I should see "student3@example.com" in the ".dash-table tbody tr:nth-child(3) td:nth-child(3)" "css_element"
-		And I log out
-		And I log in as "admin"
+    And I should see "student1@example.com" in the ".dash-table tbody tr:nth-child(1) td:nth-child(3)" "css_element"
+    And I should see "student2@example.com" in the ".dash-table tbody tr:nth-child(2) td:nth-child(3)" "css_element"
+    And I should see "student3@example.com" in the ".dash-table tbody tr:nth-child(3) td:nth-child(3)" "css_element"
+    And I log out
+    And I log in as "admin"
     #---Condition setting---#
     And I navigate to "Appearance > Default Dashboard page" in site administration
     And I turn dash block editing mode on
@@ -189,11 +189,11 @@ Feature: Dash program to show the list of cohort course
     And I log in as "teacher1"
     And I should see "Users" in the ".block_dash-local-layout-grid_layout" "css_element"
     And I should not see "student1@example.com"
-		And I should not see "student2@example.com"
+    And I should not see "student2@example.com"
     And I log out
     #---Parent login---#
     And I log in as "teacher2"
     And I should see "Users" in the ".block_dash-local-layout-grid_layout" "css_element"
     And I should see "student2@example.com" in the ".dash-table tbody tr:nth-child(1) td:nth-child(3)" "css_element"
-		And I should see "student4@example.com" in the ".dash-table tbody tr:nth-child(2) td:nth-child(3)" "css_element"
-		And I should see "teacher1@example.com" in the ".dash-table tbody tr:nth-child(3) td:nth-child(3)" "css_element"
+    And I should see "student4@example.com" in the ".dash-table tbody tr:nth-child(2) td:nth-child(3)" "css_element"
+    And I should see "teacher1@example.com" in the ".dash-table tbody tr:nth-child(3) td:nth-child(3)" "css_element"

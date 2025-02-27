@@ -1,8 +1,7 @@
 @block @block_dash @dashboard_restrict_access @javascript @_file_upload
-Feature: Add a dash to an admin pages
-  In order to check the dash featuers
-  I can add the dash block to the dashboard
-  As an admin
+Feature: Restrict access to dash block in the dashboard
+  In order to restrict access to dash block in the dashboard
+  as a Site Administrator I can set conditions
 
   Background:
     Given the following "categories" exist:
@@ -43,7 +42,7 @@ Feature: Add a dash to an admin pages
       | student1 | CH1    |
       | student2 | CH1    |
       | student1 | CH2    |
-      | teacher3 | CH1    | 
+      | teacher3 | CH1    |
     And the following "question categories" exist:
       | contextlevel | reference | name           |
       | Course       | C3        | Test questions |
@@ -117,7 +116,7 @@ Feature: Add a dash to an admin pages
     And I log in as "student3"
     And ".block_dash" "css_element" should not exist
     And I log out
-  
+
   Scenario: Dash block restrictions:restrict by parent role
     And I log in as "admin"
     And I navigate to "Users > Permissions > Define roles" in site administration
@@ -188,12 +187,12 @@ Feature: Add a dash to an admin pages
     And I log out
 
     Examples:
-     | context | user     | role    | exists    |
-     | 1       | student1 | Student | exist     |
-     | 2       | student1 | Student | not exist |
-     | 1       | teacher1 | Teacher | exist     |
-     | 2       | teacher1 | Teacher | exist     |
-     
+      | context | user     | role    | exists    |
+      | 1       | student1 | Student | exist     |
+      | 2       | student1 | Student | not exist |
+      | 1       | teacher1 | Teacher | exist     |
+      | 2       | teacher1 | Teacher | exist     |
+
   Scenario: Dash block restrictions:restrict by course group
     When I am on the "Course 2" "course" page logged in as "admin"
     #---Dash content:full layout added---#
@@ -266,7 +265,7 @@ Feature: Add a dash to an admin pages
     And I set the following fields to these values:
       | Block title                          | Users       |
       | Restrict by course completion status | In progress |
-    And I press "Save changes"    
+    And I press "Save changes"
     And I log out
     #---Student 1 login course completed role---#
     And I am on the "Course 1" "Course" page logged in as "student1"
@@ -306,7 +305,7 @@ Feature: Add a dash to an admin pages
     And I set the following fields to these values:
       | Block title                          | Users        |
       | Restrict by course completion status | Not enrolled |
-    And I press "Save changes"    
+    And I press "Save changes"
     And I log out
     #---Student:teacher 3 login Course enrolled role---#
     And I am on the "Course 1" "Course" page logged in as "teacher3"
@@ -421,7 +420,7 @@ Feature: Add a dash to an admin pages
     And I log out
     #---Admin login---#
     And I am on the "Course 3" "course" page logged in as "admin"
-     And I click on "SA" "link" in the "region-main" "region"
+    And I click on "SA" "link" in the "region-main" "region"
     And I turn dash block editing mode on
     And I configure the "Users" block
     #---Enable course completion restriction---#
