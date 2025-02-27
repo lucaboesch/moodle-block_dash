@@ -1,8 +1,7 @@
 @block @block_dash @dashboard_restrict_access @javascript @_file_upload
-Feature: Dash block restrictions:restrict by course group
-  In order to check the dash featuers
-  I can add the dash block to the dashboard
-  As an admin
+Feature: Restrict access to dash block in the dashboard
+  In order to restrict access to dash block in the dashboard
+  as a Site Administrator I can set conditions
 
   Background:
     Given the following "categories" exist:
